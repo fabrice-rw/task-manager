@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { CalendarIcon, CheckCircleIcon, StarIcon } from '@heroicons/react/24/outline';
 import { CheckCircleIcon as CheckCircleIconSolid, StarIcon as StarIconSolid } from '@heroicons/react/24/solid';
+import { useTranslation } from 'react-i18next';
 
 const TaskItem = ({ task, onToggleComplete }) => {
+  const { t } = useTranslation(); // Initialize the translation hook
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -12,7 +14,7 @@ const TaskItem = ({ task, onToggleComplete }) => {
           ? 'bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700' 
           : 'bg-white dark:bg-gray-700 border border-transparent'
         }
-        ${task.important ? 'border-l-4 border-l-amber-400 dark:border-l-amber-500' : ''}
+        ${task.important ? 'border-l-4 border-l-amber-400 dark:border-l-amber-500' : ''} 
       `}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -30,7 +32,7 @@ const TaskItem = ({ task, onToggleComplete }) => {
                 ) : (
                   <StarIcon className="w-3 h-3" />
                 )}
-                Important
+                {t('important')} {/* Translate 'Important' */}
               </span>
             )}
           </h3>
@@ -46,10 +48,10 @@ const TaskItem = ({ task, onToggleComplete }) => {
         {/* Status and Date Footer */}
         <div className="space-y-2">
           <div className="flex items-center justify-between">
-            <label className="text-sm text-gray-600 dark:text-gray-300">Status</label>
+            <label className="text-sm text-gray-600 dark:text-gray-300">{t('status')}</label> {/* Translate 'Status' */}
             <div className="flex items-center gap-2">
               <span className="text-sm text-gray-500 dark:text-gray-400">
-                {task.completed ? 'Completed' : 'In Progress'}
+                {task.completed ? t('completed') : t('in_progress')} {/* Translate status */}
               </span>
               <button 
                 onClick={() => onToggleComplete(task.id)}
