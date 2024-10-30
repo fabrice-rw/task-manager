@@ -5,6 +5,10 @@
 
 A simple task manager application built with React, featuring dark/light mode toggle, multilingual support, and task management functionalities.
 
+## Live Demo
+You can view the live version of the application here: [Task Manager Application](https://task-manager-nu-five.vercel.app/)
+
+
 ## Table of Contents
 - [Installation](#installation)
 - [Running the Application](#running-the-application)
