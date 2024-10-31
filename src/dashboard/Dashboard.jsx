@@ -6,7 +6,8 @@ import {
   Settings,
   Plus,
   Sun,
-  Moon
+  Moon,
+  Search,
 } from 'lucide-react';
 
 import TaskForm from '../components/TaskForm';
@@ -20,6 +21,7 @@ const Dashboard = () => {
   const [error, setError] = useState(null);
   const [activeTab, setActiveTab] = useState('all');
   const [currentLang, setCurrentLang] = useState('en');
+  const [searchQuery, setSearchQuery] = useState('');
 
   const { t, i18n } = useTranslation();
 
@@ -163,6 +165,18 @@ const Dashboard = () => {
     }
   };
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setIsSidebarOpen(false);
+      }
+    };
+  
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+
   return (
     <div className={`flex min-h-screen ${darkMode ? 'dark bg-gray-900 text-gray-100' : 'bg-gray-100 text-gray-900'}`}>
       {/* Sidebar */}
@@ -195,7 +209,17 @@ const Dashboard = () => {
               </span>
             </div>
             
-            <div className="flex items-center space-x-3">
+            <div className="flex items-center space-x-4">
+            <div className="relative">
+              <Search className="absolute top-2.5 left-3 text-gray-400 dark:text-gray-500" />
+              <input
+                type="text"
+                placeholder={t('search_tasks')}
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="pl-10 pr-4 py-2 w-full sm:w-64 rounded-lg bg-gray-100 dark:bg-gray-700 focus:outline-none text-gray-700 dark:text-gray-300"
+              />
+            </div>
               {/* Language Switcher */}
               <div className="flex bg-gray-100 dark:bg-gray-700 p-1 rounded-lg">
                 <button

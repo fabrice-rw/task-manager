@@ -24,7 +24,8 @@ i18n.use(initReactI18next).init({
         "task_title_placeholder": "Enter task title",
         "task_description_placeholder": "Enter task description",
         "mark_as_completed": "Mark as completed",
-        "mark_as_important": "Mark as important"
+        "mark_as_important": "Mark as important",
+        "search_tasks": "Search" 
       }
     },
     fr: {
@@ -47,7 +48,8 @@ i18n.use(initReactI18next).init({
         "task_title_placeholder": "Entrez le titre de la tâche",
         "task_description_placeholder": "Entrez la description de la tâche",
         "mark_as_completed": "Marquer comme terminée",
-        "mark_as_important": "Marquer comme importante" 
+        "mark_as_important": "Marquer comme importante",
+        "search_tasks": "Recherche"
       }
     }
   },
